@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maga Magò</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="wizard.jpg" alt="">
+        <h1>Indovina un numero da 1 a 10</h1>
+    </header>
+    <main>
+        <input type="text" id="testo">
+        <button id="btn">></button>
+        <p id="out"></p>
+        <button id="rst">RESET</button>
+    </main>
+    <footer>
+        <p id="num"></p>
+        <p id="c"></p>
+    </footer>
+    <script>
+        let bottone = document.getElementById("btn");
+        let reset = document.getElementById("rst");
+        segreto = Math.floor(Math.random()*10+1);
+        let c=0;
+        bottone.addEventListener('click', function(){
+            c++;
+            let testo = document.getElementById("testo").value;
+            if(testo == segreto){
+                document.getElementById("out").innerHTML = "Bravo, hai indovinato al: " + c + " tentativo, il numero era: " + segreto;
+            }else{
+                document.getElementById("out").innerHTML = "Riprova, tentativo numero: " + c;
+            }
+        });
+        reset.addEventListener('click', function(){
+            window .location.reload();
+        });
+        document.getElementById("c").innerHTML = "Tentativo: " + c; //debug
+        document.getElementById("num").innerHTML = "Segreto: " + segreto; //debug
+    </script>
+</body>
+</html>
